@@ -1,42 +1,97 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from "../components/header/Header"
 import StatisticCard from '../components/statistics/StatisticCard';
-
+import { Area, Pie } from '@ant-design/plots';
 
 
 const StatisticPage = () => {
-    const [isModalOpen, setIsModalOpen] = useState(false);
-    const dataSource = [
+
+
+    const [data, setData] = useState([]);
+    const data2 = [
         {
-            key: '1',
-            name: 'Mike',
-            age: 32,
-            address: '10 Downing Street',
+            type: '分类一',
+            value: 27,
         },
         {
-            key: '2',
-            name: 'John',
-            age: 42,
-            address: '10 Downing Street',
-        },
-    ];
-    const columns = [
-        {
-            title: 'Name',
-            dataIndex: 'name',
-            key: 'name',
+            type: '分类二',
+            value: 25,
         },
         {
-            title: 'Age',
-            dataIndex: 'age',
-            key: 'age',
+            type: '分类三',
+            value: 18,
         },
         {
-            title: 'Address',
-            dataIndex: 'address',
-            key: 'address',
+            type: '分类四',
+            value: 15,
+        },
+        {
+            type: '分类五',
+            value: 10,
+        },
+        {
+            type: '其他',
+            value: 5,
         },
     ];
+
+    useEffect(() => {
+        asyncFetch();
+    }, []);
+
+    const asyncFetch = () => {
+        fetch('https://gw.alipayobjects.com/os/bmw-prod/360c3eae-0c73-46f0-a982-4746a6095010.json')
+            .then((response) => response.json())
+            .then((json) => setData(json))
+            .catch((error) => {
+                console.log('fetch data failed', error);
+            });
+    };
+
+    const config = {
+        data,
+        xField: 'timePeriod',
+        yField: 'value',
+        xAxis: {
+            range: [0, 1],
+        },
+    };
+    const config2 = {
+        appendPadding: 10,
+        data2,
+        angleField: 'value',
+        colorField: 'type',
+        radius: 1,
+        innerRadius: 0.6,
+        label: {
+            type: 'inner',
+            offset: '-50%',
+            content: '{value}',
+            style: {
+                textAlign: 'center',
+                fontSize: 14,
+            },
+        },
+        interactions: [
+            {
+                type: 'element-selected',
+            },
+            {
+                type: 'element-active',
+            },
+        ],
+        statistic: {
+            title: false,
+            content: {
+                style: {
+                    whiteSpace: 'pre-wrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                },
+                content: 'AntV\nG2Plot',
+            },
+        },
+    };
     return (
         <>
             <Header />
@@ -65,6 +120,15 @@ const StatisticPage = () => {
                             amount={"13"}
                             img={"/images/product.png"} />
                     </div>
+
+
+                    <div className='flex w-full '>
+                        <div><Area {...config} /></div>
+                        <div> <Pie {...config2} /></div>
+
+                    </div>
+
+
 
                 </div>
 

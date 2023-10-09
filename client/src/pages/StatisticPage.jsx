@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import Header from "../components/header/Header"
+import StatisticCard from '../components/statistics/StatisticCard';
 
 
 
@@ -46,18 +47,23 @@ const StatisticPage = () => {
                     <h2 className='text-xl'>Hoş geldin
                         <span className='text-green-700 font-bold text-xl'>admin</span>
                     </h2>
-                    <div className="statistic-cards grid grid-cols-4 my-10">
-                        <div className="card-item p-8 rounded-lg bg-gray-800">
-                            <div className="flex gap-x-4">
-                                <div className='rounded-full bg-white w-16 h-16 p-3'>
-                                    <img src="/images/user.png" alt="" />
-                                </div>
-                                <div className='text-white'>
-                                    <p className='mb-2 text-lg font-medium text-gray-400'>Toplam Müşteri</p>
-                                    <p className='text-xl font-semibold text-gray-100'>6</p>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="statistic-cards grid md:grid-cols-2 xl:grid-cols-4 my-10 md:gap-10 gap-4">
+                        <StatisticCard
+                            title={"Toplam Müşteri"}
+                            amount={"10"}
+                            img={"/images/user.png"} />
+                        <StatisticCard
+                            title={"Toplam Müşteri2"}
+                            amount={"11"}
+                            img={"/images/money.png"} />
+                        <StatisticCard
+                            title={"Toplam Müşteri3"}
+                            amount={"12"}
+                            img={"/images/sale.png"} />
+                        <StatisticCard
+                            title={"Toplam Müşteri4"}
+                            amount={"13"}
+                            img={"/images/product.png"} />
                     </div>
 
                 </div>

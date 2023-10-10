@@ -95,7 +95,7 @@ const StatisticPage = () => {
     return (
         <>
             <Header />
-            <div className='px-6'>
+            <div className='px-6 md:pb-0 pb-20'>
                 <h1 className='text-4xl font-bold text-center
                  mb-4'>İstatistiklerim</h1>
                 <div className='statistic-section'>
@@ -122,9 +122,9 @@ const StatisticPage = () => {
                     </div>
 
 
-                    <div className='flex w-full '>
-                        <div><Area {...config} /></div>
-                        <div> <Pie {...config2} /></div>
+                    <div className='flex justify-between gap-10 lg:flex-row flex-col item-center '>
+                        <div className='lg:w-1/2 lg:h-full h-72'><Area {...config} /></div>
+                        <div className='lg:w-1/2 lg:h-full h-72'> <Pie {...config2} /></div>
 
                     </div>
 

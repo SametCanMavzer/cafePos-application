@@ -1,7 +1,8 @@
-import { Button, Form, Input } from 'antd'
+import { Button, Carousel, Form, Input } from 'antd'
 import Link from 'antd/es/typography/Link'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import AuthCarousel from '../../components/auth/AuthCarousel'
 
 const Register = () => {
     return (
@@ -43,7 +44,26 @@ const Register = () => {
                         <Link to="/login" className='text-blue-600' >Şimdi giriş yap</Link>
                     </div>
                 </div>
-                <div className='xl:w-4/6 min-w-[800px]'>right</div>
+                <div className='xl:w-4/6 lg:w-3/5 md:w-1/2 md:flex hidden  bg-[#6c63ff] h-full'>
+                    <div className='w-full h-full flex items-center '>
+                        <div className="w-full">
+                            <Carousel className='!h-full px-6'>
+                                <AuthCarousel img="/images/responsive.svg"
+                                    title="Responsive" desc="Tüm Cihaz Boyutlarıyla Uyumluluk"
+                                />
+                                <AuthCarousel img="/images/responsive.svg"
+                                    title="İstatistikler" desc="Tüm Cihaz Boyutlarıyla Uyumluluk"
+                                />
+                                <AuthCarousel img="/images/responsive.svg"
+                                    title="Responsive" desc="Tüm Cihaz Boyutlarıyla Uyumluluk"
+                                />
+                                <AuthCarousel img="/images/responsive.svg"
+                                    title="Responsive" desc="Tüm Cihaz Boyutlarıyla Uyumluluk"
+                                />
+                            </Carousel>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     )

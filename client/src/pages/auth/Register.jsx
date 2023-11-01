@@ -29,10 +29,23 @@ const Register = () => {
                         }]}>
                             <Input.Password />
                         </Form.Item>
-                        <Form.Item label="Şifre Tekrar" name={"passwordAgain"} rules={[{
-                            required: true,
-                            message: "Şifre Tekrar Alanı Boş Bırakılmaz!"
-                        }]}>
+                        <Form.Item label="Şifre Tekrar"
+                            name={"passwordAgain"}
+                            dependencies={["password"]}
+                            rules={[{
+                                required: true,
+                                message: "Şifre Tekrar Alanı Boş Bırakılmaz!"
+                            },
+                            ({ getFieldValue }) => ({
+                                validator(_, value) {
+                                    if (!value || getFieldValue('password') === value) {
+                                        return Promise.resolve();
+                                    }
+                                    return Promise.reject(new Error('Şifreler Aynı Olmak Zorundadır!'));
+                                },
+                            }),
+
+                            ]}>
                             <Input.Password />
                         </Form.Item>
                         <Form.Item >
@@ -65,7 +78,7 @@ const Register = () => {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

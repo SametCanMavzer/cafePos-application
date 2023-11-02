@@ -2,7 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose")
 const dotenv = require("dotenv")
 const app = express();
+const cors = require("cors")
 const port = 5000;
+
+
+// routes 
+
+const categoryRoute = require("./routes/categories")
+
+
 
 dotenv.config();
 
@@ -16,8 +24,13 @@ const connect = async () => {
     }
 }
 
+// middlewares
+app.use(express.json())
+app.use(cors())
 
-app.get("/", (req, res) => res.send("Hello my friend"))
+app.use("/api/categories", categoryRoute)
+
+
 app.listen(port, () => {
     connect();
     console.log(`Example app listening on port ${port}`)

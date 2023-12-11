@@ -1,5 +1,4 @@
 import { Button, Carousel, Checkbox, Form, Input } from 'antd'
-import Link from 'antd/es/typography/Link'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import AuthCarousel from '../../components/auth/AuthCarousel'

@@ -1,9 +1,12 @@
 import { useEffect, useState } from "react"
+import ProductItem from "./ProductItem";
+import { PlusOutlined, EditOutlined } from "@ant-design/icons"
+import Add from "./Add";
 
-
-const Products = () => {
+const Products = ({ categories }) => {
 
     const [prodcuts, setProdcuts] = useState([]);
+    const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
 
     useEffect(() => {
@@ -25,17 +28,18 @@ const Products = () => {
     return (
         <div className="produts-wrapper grid grid-cols-card gap-4 ">
             {prodcuts.map((item) => (
-                <div className="produts-item border hover:shadow-lg cursor-pointer transition-all select-none">
-                    <div className="produts-img">
-                        <img src={item.img} alt="" className="h-28 object-contain w-full border-b" />
-                    </div>
-                    <div className="produt-info flex flex-col p-3">
-                        <span className="font-bold">{item.title}</span>
-                        <span>{item.price}</span>
-                    </div>
-
-                </div>
+                <ProductItem key={item._id} item={item} />
             ))}
+            <div className="produts-item border hover:shadow-lg cursor-pointer transition-all 
+            select-none bg-purple-800 
+            flex justify-center items-center" onClick={() => setIsAddModalOpen(true)}>
+                <PlusOutlined className="text-white md:text-2xl hover:opacity-80" />
+            </div>
+            <div className="produts-item border hover:shadow-lg cursor-pointer transition-all 
+            select-none bg-orange-800 flex justify-center items-center">
+                <EditOutlined className="text-white md:text-2xl hover:opacity-80" />
+            </div>
+            <Add categories={categories} setProdcuts={setProdcuts} prodcuts={prodcuts} isAddModalOpen={isAddModalOpen} setIsAddModalOpen={setIsAddModalOpen} />
         </div>
     )
 }

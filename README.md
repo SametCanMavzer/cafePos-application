@@ -35,7 +35,7 @@ CafePos is a full-stack POS application developed to efficiently manage daily op
 1. **Clone the repository:**
    ```bash
    git clone https://github.com/username/CafePos.git
-   cd pos-application
+   cd cafePos
 
 2. **Start the server-side:**
 cd api

@@ -38,12 +38,14 @@ CafePos is a full-stack POS application developed to efficiently manage daily op
    cd cafePos
 
 2. **Start the server-side:**
-cd api
-npm install
-npm run build
-npm start
+   ```bash
+   cd api
+   npm install
+   npm run build
+   npm start
 
 3. **Start the server-side:**
-cd client
-npm install
-npm start
+   ```bash
+   cd client
+   npm install
+   npm start

@@ -2,7 +2,7 @@ import React from 'react'
 import Header from '../components/header/Header'
 import Edit from '../components/products/Edit'
 
-const ProdcutPage = () => {
+const ProductPage = () => {
     return (
         <>
             <Header />
@@ -16,4 +16,4 @@ const ProdcutPage = () => {
     )
 }
 
-export default ProdcutPage
+export default ProductPage
